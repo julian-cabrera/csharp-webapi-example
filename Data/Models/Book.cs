@@ -12,5 +12,10 @@
     public string Author { get; set; }
     public string CoverUrl { get; set; }
     public DateTime DateAdded { get; set; }
-  }
+
+        //Nav props
+        public int PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
+        public List<Book_Author> Book_Author { get; set; }
+    }
 }

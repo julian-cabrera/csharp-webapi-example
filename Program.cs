@@ -16,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddTransient<BookService>();
+builder.Services.AddTransient<AuthorService>();
+builder.Services.AddTransient<PublisherService>();
 
 var app = builder.Build();
 
@@ -32,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-AppDbInitializer.Seed(app); 
+//AppDbInitializer.Seed(app); 
 
 app.Run();
