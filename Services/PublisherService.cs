@@ -1,5 +1,6 @@
 ﻿using csharp_webapi_example.Data;
 using csharp_webapi_example.Data.Models;
+using csharp_webapi_example.Data.Paging;
 using csharp_webapi_example.Exceptions;
 using csharp_webapi_example.ViewModels;
 using System.Text.RegularExpressions;
@@ -25,6 +26,33 @@ namespace csharp_webapi_example.Services
             _context.Publishers.Add(_publisher);
             _context.SaveChanges();
             return _publisher;
+        }
+
+        public List<Publisher> GetAllPublishers(string sortBy, string searchString, int? pageNumber)
+        {
+            var publishers = _context.Publishers.OrderBy(n => n.Name).ToList();
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                switch (sortBy)
+                {
+                    case "name_desc":
+                            publishers = publishers.OrderByDescending(n => n.Name).ToList();
+                            break;
+                    default:
+                        break;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                publishers = publishers.Where(n => n.Name.Contains(searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            }
+
+            int pageSize = 5;
+            publishers = PaginatedList<Publisher>.Create(publishers.AsQueryable(), pageNumber ?? 1, pageSize);
+
+            return publishers; 
         }
 
         public Publisher GetPublisherById(int id) => _context.Publishers.FirstOrDefault(x => x.Id == id);

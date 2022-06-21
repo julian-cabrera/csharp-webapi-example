@@ -1,4 +1,6 @@
-﻿using csharp_webapi_example.Exceptions;
+﻿using csharp_webapi_example.ActionResults;
+using csharp_webapi_example.Data.Models;
+using csharp_webapi_example.Exceptions;
 using csharp_webapi_example.Services;
 using csharp_webapi_example.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +16,20 @@ namespace csharp_webapi_example.Controllers
         public PublisherController(PublisherService publisherService)
         {
             _publisherService = publisherService;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPublishers(string sortBy, string searchString, int pageNumber)
+        {
+            try
+            {
+                var _result = _publisherService.GetAllPublishers(sortBy, searchString, pageNumber);
+                return Ok(_result);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Error loading publishers");
+            }
         }
 
         [HttpPost]
@@ -37,15 +53,25 @@ namespace csharp_webapi_example.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPublisherById(int id)
         {
-            throw new Exception("Exception handled by middleware");
-
             var _response = _publisherService.GetPublisherById(id);
-            if(_response != null)
+
+            if (_response != null)
             {
                 return Ok(_response);
-            } else
+                //var _responseObj = new CustomActionResultVM()
+                //{
+                //    Publisher = _response,
+                //};
+                //return new CustomActionResult(_responseObj);
+            }
+            else
             {
                 return NotFound();
+                //var _responseObj = new CustomActionResultVM()
+                //{
+                //    Exception = new Exception($"This is coming from {nameof(GetPublisherById)} in {this.GetType().Name}"),
+                //};
+                //return new CustomActionResult(_responseObj);
             }
         }
 
