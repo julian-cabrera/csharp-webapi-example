@@ -18,7 +18,7 @@ namespace csharp_webapi_example.Controllers
         [HttpPost]
         public IActionResult AddBook([FromBody] BookVM book)
         {
-            _bookService.AddBook(book);
+            _bookService.AddBookWithAuthors(book);
             return Ok();
         }
         [HttpGet]

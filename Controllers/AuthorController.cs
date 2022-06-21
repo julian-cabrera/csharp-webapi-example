@@ -20,5 +20,12 @@ namespace csharp_webapi_example.Controllers
             _authorService.AddAuthor(author);
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetAuthorWithBooks(int id)
+        {
+            var response = _authorService.GetAuthorWithBooks(id);
+            return Ok(response);
+        }
     }
 }

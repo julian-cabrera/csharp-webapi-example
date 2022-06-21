@@ -21,5 +21,16 @@ namespace csharp_webapi_example.Services
             _context.Authors.Add(_author);
             _context.SaveChanges();
         }
+
+        public AuthorWithBooksVM GetAuthorWithBooks(int id)
+        {
+            var _author = _context.Authors.Where(author => author.Id == id).Select(author => new AuthorWithBooksVM()
+            {
+                FullName = author.FullName,
+                BookTitles = author.Book_Author.Select(ba => ba.Book.Title).ToList()
+            })
+                .FirstOrDefault();
+            return _author;
+        }
     }
 }
