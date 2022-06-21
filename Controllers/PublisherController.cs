@@ -37,6 +37,8 @@ namespace csharp_webapi_example.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPublisherById(int id)
         {
+            throw new Exception("Exception handled by middleware");
+
             var _response = _publisherService.GetPublisherById(id);
             if(_response != null)
             {

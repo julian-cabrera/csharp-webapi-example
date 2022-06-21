@@ -1,5 +1,6 @@
 
 using csharp_webapi_example.Data;
+using csharp_webapi_example.Exceptions;
 using csharp_webapi_example.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,8 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
 }
+
+app.ConfigureBuildInExceptionHandler();
 
 app.UseHttpsRedirection();
 
