@@ -33,7 +33,8 @@ try
 
     builder.Services.AddTransient<BookService>();
     builder.Services.AddTransient<AuthorService>();
-    builder.Services.AddTransient<PublisherService>();
+    builder.Services.AddTransient<PublisherService>(); 
+    builder.Services.AddTransient<LogService>();
 
     builder.Services.AddApiVersioning(config =>
     {
@@ -44,9 +45,9 @@ try
     });
 
     builder.Host.UseSerilog();
-
+    
     var app = builder.Build();
-
+    
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
@@ -54,8 +55,9 @@ try
         app.UseSwaggerUI();
     }
 
-    //app.ConfigureBuildInExceptionHandler();
-    app.ConfigureCustomExceptionHandler();
+    var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
+    app.ConfigureBuildInExceptionHandler(loggerFactory);
+    //app.ConfigureCustomExceptionHandler();
 
     app.UseHttpsRedirection();
 

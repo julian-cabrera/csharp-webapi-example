@@ -1,0 +1,41 @@
+06/22/2022 08:17:47 -03:00 [Fatal] - Message: Unhandled Exception
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\3-Repositorios\.NET-repos\csharp-webapi-example\Program.cs:line 48
+06/22/2022 08:17:47 -03:00 [Information] - Message: Shut down complete
+06/22/2022 08:18:57 -03:00 [Fatal] - Message: Unhandled Exception
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\3-Repositorios\.NET-repos\csharp-webapi-example\Program.cs:line 48
+06/22/2022 08:18:57 -03:00 [Information] - Message: Shut down complete
+06/22/2022 08:42:42 -03:00 [Information] - Message: Loggin from Publihser GetAllPublishers()
+06/22/2022 08:48:02 -03:00 [Information] - Message: Loggin from Publihser GetAllPublishers()
+06/22/2022 08:48:06 -03:00 [Information] - Message: Loggin from Publihser GetAllPublishers()
+06/22/2022 08:48:53 -03:00 [Information] - Message: Loggin from Publihser GetAllPublishers()
+06/22/2022 09:11:05 -03:00 [Error] - Message: An unhandled exception has occurred while executing the request.
+System.Exception: This is an exception thrown from GetAllPublishers()
+   at csharp_webapi_example.Controllers.PublisherController.GetAllPublishers() in D:\3-Repositorios\.NET-repos\csharp-webapi-example\Controllers\PublisherController.cs:line 26
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+06/22/2022 09:11:05 -03:00 [Error] - Message: {"StatusCode":500,"Message":"This is an exception thrown from GetAllPublishers()","Path":"/api/publisher"}
+06/22/2022 09:23:55 -03:00 [Information] - Message: Loggin from Publihser GetAllPublishers()
