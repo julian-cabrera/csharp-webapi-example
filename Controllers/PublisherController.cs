@@ -13,16 +13,32 @@ namespace csharp_webapi_example.Controllers
     public class PublisherController : ControllerBase
     {
         private readonly PublisherService _publisherService;
-        public PublisherController(PublisherService publisherService)
+        private readonly ILogger<PublisherController> _logger;
+        public PublisherController(PublisherService publisherService, ILogger<PublisherController> logger)
         {
             _publisherService = publisherService;
+            _logger = logger;
         }
 
         [HttpGet]
+        public IActionResult GetAllPublishers()
+        {
+            try
+            {
+                _logger.LogInformation("Loggin from Publihser GetAllPublishers()");
+                var _result = _publisherService.GetAllPublishers();
+                return Ok(_result);
+            }
+            catch (Exception)
+            {
+                return BadRequest("Error loading publishers");
+            }
+        }
         public IActionResult GetAllPublishers(string sortBy, string searchString, int pageNumber)
         {
             try
             {
+                _logger.LogInformation("Loggin Publihser GetAllPublishers()");
                 var _result = _publisherService.GetAllPublishers(sortBy, searchString, pageNumber);
                 return Ok(_result);
             }

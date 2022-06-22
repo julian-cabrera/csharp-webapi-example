@@ -28,6 +28,7 @@ namespace csharp_webapi_example.Services
             return _publisher;
         }
 
+        public List<Publisher> GetAllPublishers() => _context.Publishers.ToList();
         public List<Publisher> GetAllPublishers(string sortBy, string searchString, int? pageNumber)
         {
             var publishers = _context.Publishers.OrderBy(n => n.Name).ToList();
